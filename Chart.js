@@ -349,7 +349,7 @@ window.Chart = function(context){
 		
 		return new Bar(data,config,context);		
 	}
-	
+
 	var clear = function(c){
 		c.clearRect(0, 0, width, height);
 	};

@@ -2,7 +2,9 @@
 <html>
 	<head>
 		<title>Line Chart</title>
+		<script src="jquery.min.js"></script>
 		<script src="../Chart.js"></script>
+		<script src="main.js"></script>
 		<meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
 		<style>
 			canvas{
@@ -10,24 +12,27 @@
 		</style>
 	</head>
 	<body>
-		<canvas id="canvas" height="450" width="600"></canvas>
+		<canvas id="analytics-graph" height="250" width="800"></canvas>
+		<button>Update</button>
 
 
 	<script>
+
+		var type = "Line";
 
 		var lineChartData = {
 			labels : ["January","February","March","April","May","June","July"],
 			datasets : [
 				{
-					fillColor : "rgba(220,220,220,0.5)",
-					strokeColor : "rgba(220,220,220,1)",
+					fillColor : "rgba(144,182,234,0.5)",
+					strokeColor : "rgba(144,182,234,0.5)",
 					pointColor : "rgba(220,220,220,1)",
 					pointStrokeColor : "#fff",
 					data : [65,59,90,81,56,55,40]
 				},
 				{
 					fillColor : "rgba(151,187,205,0.5)",
-					strokeColor : "rgba(151,187,205,1)",
+					strokeColor : "rgba(151,187,205,0.5)",
 					pointColor : "rgba(151,187,205,1)",
 					pointStrokeColor : "#fff",
 					data : [28,48,40,19,96,27,100]
@@ -36,8 +41,15 @@
 			
 		}
 
-	var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData);
-	
+		var Analytics = new Analytics();
+		var graph = Analytics.Graph(lineChartData);
+		console.log(graph);
+		graph.draw();
+
+		$("button").on("click",function() {
+			graph.draw(lineChartData);
+		})
+		
 	</script>
 	</body>
 </html>
